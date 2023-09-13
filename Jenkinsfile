@@ -4,7 +4,7 @@ pipeline {
         
     }
     stages {
-        stage('Git-Checkout') {
+        stage('GitScm-Checkout') {
             steps {
                 git 'https://github.com/bhargavS2301/Healthcare.git'
             }
