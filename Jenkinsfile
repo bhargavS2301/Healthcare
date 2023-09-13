@@ -1,8 +1,6 @@
 pipeline {
     agent any
-    tools {
-        
-    }
+ 
     stages {
         stage('Git-Code-Checkout') {
             steps {
