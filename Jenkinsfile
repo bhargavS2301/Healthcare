@@ -4,7 +4,7 @@ pipeline {
         
     }
     stages {
-        stage('Git-Code:checkout') {
+        stage('Git-Checkout') {
             steps {
                 git 'https://github.com/bhargavS2301/Healthcare.git'
             }
