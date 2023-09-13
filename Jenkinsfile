@@ -10,5 +10,13 @@ pipeline {
                 git 'https://github.com/bhargavS2301/Healthcare.git'
             }
         }
+       stages {
+        stage('Code Build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        } 
+       }
     }
-}
+    }
+
