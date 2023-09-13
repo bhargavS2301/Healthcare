@@ -24,7 +24,7 @@ pipeline {
                  withSonarQubeEnv('sonar-scanner') {
                      sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Healthcare \
                      -Dsonar.java.binaries=. \
-                     -Dsonar.projectkey=Healthcare '''
+                     -Dsonar.projectKey=Healthcare '''
                  }
              }
          }
