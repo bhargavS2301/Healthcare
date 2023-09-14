@@ -50,12 +50,12 @@
          <snapshotRepository>
             <id>maven-snapshots</id>
           <name>maven-snapshots</name>
-            <url>http://15.207.247.180:8081/repositories/maven-snapshots</url>
+            <url>http://15.207.247.180:8081/repository/Healthcare/</url>
         </snapshotRepository>
         <repository>
           <id>maven-releases</id>
           <name>maven-releases</name>
-           <url>http://15.207.247.180:8081/repositories/maven-releases</url>
+           <url>http:http://15.207.247.180:8081/repository/Healthcare/</url>
           </repository>
    </distributionManagement>
    </project>
