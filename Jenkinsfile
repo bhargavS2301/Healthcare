@@ -5,11 +5,6 @@ pipeline {
     }
     environment {
         SCANNER_HOME= tool 'sonar-scanner'
-        NEXUS_VERSION = "nexus3"
-        NEXUS_PROTOCOL = "http"
-        NEXUS_URL = "15.207.247.180:8081"
-        NEXUS_REPOSITORY = "Healthcare"
-        NEXUS_CREDENTIAL_ID = "nexus-cred"
     }
  
     stages {
@@ -38,21 +33,28 @@ pipeline {
                 sh 'mvn clean install'
             }
         } 
-         stage  ('artifact upload') {
-             steps {
-                 sh ''' nexusArtifactUploader credentialsId: 'nexus-cred', 
-                        groupId: 'org.springframework.boot', 
-                        nexusUrl: '15.207.247.180:8081', 
-                        nexusVersion: 'nexus3', 
-                        protocol: 'http', repository: 'http://15.207.247.180:8081/repository/Healthcare/', 
-                        version: '2.7.4 '''
-             
-         }
-        
-        
+        stage('Artifact Upload-Deploy') {
+          steps {
+           nexusArtifactUploader(
+        nexusVersion: 'nexus3',
+        protocol: 'http',
+        nexusUrl: '15.207.247.180:8081',
+        groupId: 'com.project.staragile',
+        version: '0.0.1-SNAPSHOT',
+        repository: 'Healthcare',
+        credentialsId: 'nexus-cred',
+        artifacts: [
+            [artifactId: 'medicure',
+             classifier: '',
+             file: 'target/*.jar',
+             type: 'jar']
+        ]
+     )
+      }
+    }
+            
        }
     }
     
-    }
-    }
+    
 
