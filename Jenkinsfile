@@ -6,6 +6,9 @@ pipeline {
     environment {
         SCANNER_HOME= tool 'sonar-scanner'
     }
+     parameters {
+        booleanParam(name: 'skip_test', defaultValue: false, description: 'Set to true to skip the test stage')
+    }
  
     stages {
         stage('Git-Code-Checkout') {
@@ -15,11 +18,13 @@ pipeline {
         }
       
         stage('Code compile') {
+            when { expression { params.skip_test != false } }
             steps {
                 sh 'mvn clean compile'
             }
         } 
          stage ('Sonar-Analysis') {
+             when { expression { params.skip_test != false } }
              steps {
                  withSonarQubeEnv('sonar-scanner') {
                      sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Healthcare \
