@@ -46,16 +46,5 @@
 			</plugin>
 		</plugins>
 	</build>
-        <distributionManagement>
-         <snapshotRepository>
-            <id>maven-snapshots</id>
-          <name>maven-snapshots</name>
-            <url>http://15.207.247.180:8081/repository/Healthcare/</url>
-        </snapshotRepository>
-        <repository>
-          <id>maven-releases</id>
-          <name>maven-releases</name>
-           <url>http:http://15.207.247.180:8081/repository/Healthcare/</url>
-          </repository>
-   </distributionManagement>
-   </project>
+
+</project>
