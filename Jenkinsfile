@@ -46,7 +46,7 @@ pipeline {
         artifacts: [
             [artifactId: 'medicure',
              classifier: '',
-             file: 'target/*.jar',
+             file: 'target/medicure-0.0.1-SNAPSHOT.jar',
              type: 'jar']
         ]
      )
