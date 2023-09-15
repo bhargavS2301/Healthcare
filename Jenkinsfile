@@ -40,7 +40,7 @@ pipeline {
         } 
          stage('Docker Build') {
             steps {
-                sh 'docker build -t bhargavk0702/javaapp .'
+                sh 'docker build -t bhargavk0702/javaapp:1.0 .'
                 }
         } 
         stage('Dcker image push') {
