@@ -38,26 +38,19 @@ pipeline {
                 sh 'mvn clean install'
             }
         } 
-        stage('Artifact Upload-Deploy') {
+         stage('Docker Build') {
+            steps {
+                sh 'docker build -t bhargavk0702/javaapp .'
+                }
+        } 
+        stage('Dcker image push') {
           steps {
-           nexusArtifactUploader(
-        nexusVersion: 'nexus3',
-        protocol: 'http',
-        nexusUrl: '43.205.117.255:8081',
-        groupId: 'com.project.staragile',
-        version: '0.0.1-SNAPSHOT',
-        repository: 'Healthcare',
-        credentialsId: 'nexus-cred',
-        artifacts: [
-            [artifactId: 'medicure',
-             classifier: '',
-             file: 'target/medicure-0.0.1-SNAPSHOT.jar',
-             type: 'jar']
-        ]
-     )
-      }
-    }
-            
+              withCredentials([string(credentialsId: 'docker-cred', variable: 'docker')]) {
+              sh 'docker login -u bhargavk0702 -p ${docker}'
+              sh 'docker push bhargavk0702/javaapp:1.0'
+}
+          }
+        }
        }
     }
     
