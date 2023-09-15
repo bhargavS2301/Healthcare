@@ -43,7 +43,7 @@ pipeline {
            nexusArtifactUploader(
         nexusVersion: 'nexus3',
         protocol: 'http',
-        nexusUrl: '15.207.247.180:8081',
+        nexusUrl: '43.205.117.255:8081',
         groupId: 'com.project.staragile',
         version: '0.0.1-SNAPSHOT',
         repository: 'Healthcare',
